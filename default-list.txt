@@ -1,0 +1,226 @@
+# Exemplo de lista online do Bloqueador
+# Publique este arquivo em um endereço https:// (ex.: GitHub, link "Raw")
+
+[sites]
+store.epicgames.com
+facebook.com
+instagram.com
+twitter.com
+x.com
+tiktok.com
+kwai.com
+snapchat.com
+reddit.com
+threads.net
+netflix.com
+twitch.tv
+primevideo.com
+disneyplus.com
+max.com
+globoplay.globo.com
+crunchyroll.com
+play.hbomax.com
+nuvio.tv/
+web.whatsapp.com
+web.telegram.org
+discord.com
+messenger.com
+roblox.com
+poki.com
+crazygames.com
+miniclip.com
+friv.com
+y8.com
+store.steampowered.com
+epicgames.com
+miniplay.com
+hydralauncher.gg
+www.friv.com
+www.clickjogos.com.br/
+www.jogos360.com.br/
+www.1001jogos.com.br/
+www.silvergames.com/pt
+itch.io/games
+www.inxanitylabs.com/games
+recompiledgames.com/
+submitgame.github.io/awesome-decomp-games/
+www.tabplaygames.com/
+justplayweb.com/
+quenq.com/
+nfsmwonline.com/
+vheissu.github.io/
+bet365.com
+betano.com
+blaze.com
+stake.com
+betfair.com
+sportingbet.com
+pixbet.com
+esportesdasorte.com
+library.hydra.wiki
+www.retrogames.onl
+
+
+[apps]
+RobloxPlayerBeta.exe
+steam.exe
+steamwebhelper.exe
+EpicGamesLauncher.exe
+RiotClientServices.exe
+Battle.net.exe
+GOGGalaxy.exe
+Origin.exe
+EADesktop.exe
+UbisoftConnect.exe
+microsoft Store.exe
+XboxApp.exe
+XboxGameBar.exe
+Minecraft.Windows.exe
+javaw.exe
+FortniteClient-Win64-Shipping.exe
+VALORANT-Win64-Shipping.exe
+LeagueClient.exe
+League of Legends.exe
+cs2.exe
+GTA5.exe
+FreeFire.exe
+HD-Player.exe
+Among Us.exe
+Call of Duty Modern Warfare.exe
+Call of Duty Warzone.exe
+Call of Duty Vanguard.exe
+Call of Duty Black Ops Cold War.exe
+Cuphead.exe
+Cyberpunk 2077.exe
+Hollow Knight.exe
+Mecha Chameleon.exe
+Backrooms.exe
+Grand Theft Auto V.exe
+Red Dead Redemption 2.exe
+The Witcher 3: Wild Hunt.exe
+Elden Ring.exe
+Hogwarts Legacy.exe
+Assassin's Creed.exe
+God of War.exe
+Marvel's Spider-Man.exe
+Ghost of Tsushima.exe
+Five Nights at Freddy's.exe
+Poppy Playtime.exe
+Garten of Banban.exe
+Outlast.exe
+Resident Evil.exe
+Phasmophobia.exe
+Lethal Company.exe
+Amnesia.exe
+Little Nightmares.exe
+Celeste.exe
+Dead Cells.exe
+Undertale.exe
+Terraria.exe
+Stardew Valley.exe
+The Binding of Isaac.exe
+Pizza Tower.exe
+Counter-Strike 2.exe
+Valorant.exe
+Fortnite.exe
+Call of Duty: Warzone.exe
+PUBG: Battlegrounds.exe
+Overwatch 2.exe
+Apex Legends.exe
+Rainbow Six Siege.exe
+Team Fortress 2.exe
+Combat Master.exe
+Need for Speed Heat.exe
+Need for Speed Unbound.exe
+Forza Horizon 5.exe
+Forza Horizon 6.exe
+The Crew Motorfest.exe
+Assetto Corsa.exe
+BeamNG.drive.exe
+CarX Drift Racing Online.exe
+Minecraft.exe
+Roblox.exe
+Dota 2.exe
+Rocket League.exe
+The Sims 4.exe
+Genshin Impact.exe
+Palworld.exe
+Brawlhalla.exe
+Discord.exe
+WhatsApp.exe
+Telegram.exe
+Skype.exe
+
+[termos]
+fortnite
+minecraft
+roblox
+free fire
+valorant
+league of legends
+cs2
+gta
+gta5
+call of duty
+among us
+pubg
+apex legends
+rainbow six
+rocket league
+stardew valley
+the sims
+genshin impact
+palworld
+brawlhalla
+dead cells
+undertale
+terraria
+the binding of isaac
+pizza tower
+celeste
+need for speed
+forza horizon
+the crew
+assetto corsa
+beamng.drive
+carx drift racing
+hollow knight
+mecha chameleon
+backrooms
+red dead redemption
+the witcher
+elden ring
+hogwarts legacy
+assassin's creed
+god of war
+marvel's spider-man
+ghost of tsushima
+five nights at freddy's
+poppy playtime
+garten of banban
+outlast
+resident evil
+phasmophobia
+lethal company
+amnesia
+little nightmares
+facebook
+instagram
+tiktok
+twitter
+snapchat
+threads
+kwai
+reddit
+nuvio
+bet365
+cassino
+tigrinho
+aposta
+blaze
+stake
+betfair
+sportingbet
+pixbet
+retrogames
+esportesdasorte
