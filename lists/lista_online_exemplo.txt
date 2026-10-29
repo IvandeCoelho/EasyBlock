@@ -1,0 +1,16 @@
+# Exemplo de lista online do Bloqueador
+# Publique este arquivo em um endereço https:// (ex.: GitHub, link "Raw")
+
+[sites]
+youtube.com
+tiktok.com
+roblox.com
+
+[apps]
+steam.exe
+RobloxPlayerBeta.exe
+EpicGamesLauncher.exe
+
+[termos]
+fortnite
+cassino
