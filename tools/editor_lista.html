@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editor de lista</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --card: #ffffff;
+      --fg: #1c1e21;
+      --muted: #5f6672;
+      --line: #d9dde3;
+      --accent: #0b63ce;
+      --accent-fg: #ffffff;
+      --ok: #1d7a3d;
+      --warn: #9a5b00;
+      --field: #ffffff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #17181b;
+        --card: #212328;
+        --fg: #e8e9ec;
+        --muted: #9aa1ad;
+        --line: #363a42;
+        --accent: #5aa2ff;
+        --accent-fg: #0b1220;
+        --ok: #6fcf8a;
+        --warn: #e3b341;
+        --field: #1b1d21;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #17181b;
+      --card: #212328;
+      --fg: #e8e9ec;
+      --muted: #9aa1ad;
+      --line: #363a42;
+      --accent: #5aa2ff;
+      --accent-fg: #0b1220;
+      --ok: #6fcf8a;
+      --warn: #e3b341;
+      --field: #1b1d21;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 15px/1.5 system-ui, "Segoe UI", Roboto, sans-serif;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin: 0 0 4px;
+    }
+
+    p.lead {
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 760px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    small {
+      color: var(--muted);
+      display: block;
+      margin-top: 6px;
+    }
+
+    textarea,
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px 10px;
+      background: var(--field);
+      color: var(--fg);
+      font: 14px ui-monospace, Consolas, monospace;
+    }
+
+    textarea {
+      min-height: 220px;
+      resize: vertical;
+    }
+
+    textarea.out {
+      min-height: 260px;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    button,
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--fg);
+      border-radius: 8px;
+      padding: 9px 16px;
+      font: inherit;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-fg);
+      font-weight: 600;
+    }
+
+    button:hover,
+    .btn:hover {
+      filter: brightness(1.08);
+    }
+
+    button:focus-visible,
+    .btn:focus-visible,
+    textarea:focus-visible,
+    input:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .status {
+      margin-top: 10px;
+      min-height: 1.4em;
+      color: var(--ok);
+    }
+
+    .status.warn {
+      color: var(--warn);
+    }
+
+    section {
+      margin-top: 18px;
+    }
+
+    .secret {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+
+    @media (max-width: 560px) {
+      .secret {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Editor de lista do EasyBlock</h1>
+    <p class="lead">Monte o arquivo <code>lista_online.txt</code>, assine se quiser e publique no GitHub.
+      Tudo roda aqui no navegador; nada é enviado a lugar nenhum.</p>
+
+    <div class="row" style="margin:0 0 14px">
+      <label class="btn" for="file" style="margin:0;font-weight:500">📂 Carregar arquivo existente…</label>
+      <input id="file" type="file" accept=".txt,.json,.list" hidden>
+      <button id="clear" type="button">Limpar tudo</button>
+    </div>
+
+    <div class="grid">
+      <div class="card"><label for="sites">🌐 Sites</label>
+        <textarea id="sites" spellcheck="false" placeholder="youtube.com&#10;tiktok.com"></textarea>
+        <small>Um por linha. Pode colar URLs completas.</small>
+      </div>
+      <div class="card"><label for="apps">🎮 Aplicativos / jogos</label>
+        <textarea id="apps" spellcheck="false" placeholder="steam.exe&#10;RobloxPlayerBeta.exe"></textarea>
+        <small>Nome do programa (.exe).</small>
+      </div>
+      <div class="card"><label for="terms">🔤 Termos</label>
+        <textarea id="terms" spellcheck="false" placeholder="fortnite&#10;cassino"></textarea>
+        <small>Título de janela ou nome de processo (mín. 3 letras).</small>
+      </div>
+    </div>
+
+    <section class="card">
+      <div class="secret">
+        <div>
+          <label for="secret">🔒 Chave secreta (opcional)</label>
+          <input id="secret" type="password" autocomplete="off" placeholder="a mesma chave configurada no app">
+          <small>Com chave, o arquivo termina com <code>&#35; hmac: …</code>. No app, informe a mesma chave na
+            lista online: se alguém alterar o arquivo sem a chave, o app o recusa. Guarde a chave
+            com cuidado; ela não é salva aqui.</small>
+        </div>
+        <button id="gen" class="primary" type="button">Gerar arquivo</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <label for="out">Resultado</label>
+      <textarea id="out" class="out" spellcheck="false" readonly></textarea>
+      <div class="row">
+        <button id="copy" type="button">📋 Copiar</button>
+        <button id="download" type="button">💾 Baixar lista_online.txt</button>
+        <a class="btn" id="gh" target="_blank" rel="noopener"
+          href="https://github.com/IvandeCoelho/EasyBlock/edit/main/lists/default-list.txt">✏️ Abrir edição no
+          GitHub</a>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <small>No GitHub, cole o conteúdo, clique em “Commit changes” e pronto: os computadores atualizam sozinhos
+        no próximo ciclo de sincronização.</small>
+    </section>
+  </main>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    const ALIAS = {
+      sites: "sites", site: "sites", apps: "apps", app: "apps", aplicativos: "apps", jogos: "apps",
+      terms: "terms", termos: "terms", term: "terms"
+    };
+
+    function status(msg, warn) {const s = $("status"); s.textContent = msg; s.className = "status" + (warn ? " warn" : "");}
+
+    function lines(id) {
+      const seen = new Set(), out = [];
+      for (let l of $(id).value.split(/[\n\r,;]+/)) {
+        l = l.trim();
+        if (l && !seen.has(l.toLowerCase())) {seen.add(l.toLowerCase()); out.push(l);}
+      }
+      return out;
+    }
+
+    // mesma normalizacao do app (core.canonical_body)
+    function canonical(text) {
+      return text.replace(/\r\n?/g, "\n").split("\n").map(l => l.replace(/\s+$/, "")).join("\n").replace(/\n+$/, "");
+    }
+
+    async function hmacHex(body, secret) {
+      const enc = new TextEncoder();
+      const key = await crypto.subtle.importKey("raw", enc.encode(secret), {name: "HMAC", hash: "SHA-256"}, false, ["sign"]);
+      const sig = await crypto.subtle.sign("HMAC", key, enc.encode(canonical(body)));
+      return [...new Uint8Array(sig)].map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    async function generate() {
+      const parts = [["sites", "sites"], ["apps", "apps"], ["termos", "terms"]];
+      let body = "# Lista do Bloqueador — gerada pelo editor_lista.html\n";
+      for (const [title, id] of parts) {
+        const items = lines(id);
+        if (items.length) body += `\n[${title}]\n${items.join("\n")}\n`;
+      }
+      body = canonical(body);
+      const secret = $("secret").value;
+      let text = body + "\n";
+      if (secret) {
+        if (!(window.crypto && crypto.subtle)) {status("Este navegador não permite assinar (precisa de contexto seguro).", true); return;}
+        text += `# hmac: ${await hmacHex(body, secret)}\n`;
+      }
+      $("out").value = text;
+      const n = ["sites", "apps", "terms"].reduce((a, id) => a + lines(id).length, 0);
+      status(`${n} itens${secret ? ", assinado com HMAC-SHA256" : " (sem assinatura)"}.`, false);
+    }
+
+    function loadText(text) {
+      text = text.replace(/^﻿/, "");
+      const data = {sites: [], apps: [], terms: []};
+      let parsed = null;
+      try {parsed = JSON.parse(text);} catch (e) { }
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+        for (const k of Object.keys(data)) if (Array.isArray(parsed[k])) data[k] = parsed[k].map(String);
+      } else {
+        let section = "sites";
+        for (let line of text.split(/\r?\n/)) {
+          line = line.trim();
+          if (!line || line.startsWith("#")) continue;
+          const m = line.match(/^\[(.+)\]$/);
+          if (m) {section = ALIAS[m[1].trim().toLowerCase()] || null; continue;}
+          if (section) data[section].push(...line.split(/[,;]+/).map(s => s.trim()).filter(Boolean));
+        }
+      }
+      for (const k of Object.keys(data)) $(k).value = data[k].join("\n");
+    }
+
+    $("file").addEventListener("change", async e => {
+      const f = e.target.files[0]; if (!f) return;
+      loadText(await f.text());
+      $("out").value = "";
+      status(`Arquivo "${f.name}" carregado. Edite e clique em “Gerar arquivo”.`, false);
+      e.target.value = "";
+    });
+    $("gen").addEventListener("click", generate);
+    $("clear").addEventListener("click", () => {for (const id of ["sites", "apps", "terms", "out"]) $(id).value = ""; status("", false);});
+    $("copy").addEventListener("click", async () => {
+      if (!$("out").value) await generate();
+      try {await navigator.clipboard.writeText($("out").value); status("Copiado!", false);}
+      catch (e) {$("out").select(); document.execCommand("copy"); status("Copiado!", false);}
+    });
+    $("download").addEventListener("click", async () => {
+      if (!$("out").value) await generate();
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([$("out").value], {type: "text/plain;charset=utf-8"}));
+      a.download = "lista_online.txt"; a.click(); URL.revokeObjectURL(a.href);
+      status("Arquivo baixado.", false);
+    });
+  </script>
+</body>
+
+</html>
